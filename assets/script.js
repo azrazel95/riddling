@@ -10,8 +10,14 @@ for (i = 0; i < questionCards.length; i++){
     console.log(questionCards[i])
 }
 
+startbtn.addeventlistener("click", startquiz())
+
+startquiz(){
+}
 
   function nextQuestion() {
+
+    var state = quest.getAttribute("data-state");
     if (quest.data-state ==='visible') {
         quest.data-state === 'hidden';
     }
@@ -19,3 +25,20 @@ for (i = 0; i < questionCards.length; i++){
     quest.data-state === 'visible'
 }
 
+
+
+
+
+
+
+
+// function gameOver(){
+//     timeLeft = 0;
+//     var submitBtn = document.createElement("button");
+//     var hsInitialForm = document.createElement ("input");
+
+//     hsInitialForm.setAttribute ("type", "test")
+// }
+// // clears storage
+// // Storage.clear();
+// displayBox.innerHTML

@@ -1,8 +1,18 @@
-
-.custombtn { 
+body
+    {
+        background-color:purple;
+        background-image: linear-gradient(rgb(34, 36, 145), rgb(128, 9, 32));
+      }
+      
+.custombtn,
+.nextbtn { 
     background-color:blueviolet;
     color:white;
     margin-left:20%;
+}
+.nextbtn {
+    width:100%;
+    margin-left:0
 }
 
 .scorebtn{
@@ -11,6 +21,22 @@
     display:flex;
 }
 
-.container{
-    margin-top:;
+.startcontainer{
+    visibility: visible;
+}
+
+#q0{
+    display:none;
+}
+
+#q1{
+    display:none;
+}
+
+#q2{
+    display:none;
+}
+
+#q3{
+    display:none;
 }
