@@ -11,9 +11,12 @@
     display:flex;
 }
 
-.container{
-    margin-top:;
-}
+
 .hide[data-state="hidden"] {
     display:none !important;
 }
+
+  
+  .card[data-state="visible"] {
+    display: block !important;
+  }
