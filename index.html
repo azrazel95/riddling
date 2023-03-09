@@ -15,24 +15,24 @@
                 <button id="scores" type="button" class="btn scorebtn btn-success">Scores!</button>
               <figure class="d-flex">
                 <div id="countdown">
-                    <p id="timer">element</p>
+                    <p id="timer" class="btn mt-4 btn-success">timer!</p>
                 </div>
             </figure>
             </div>
           </div>
     </header>
 
-    <section class="startcontainer vh-100 d-flex align-items-center justify-content-center">
+    <section class="container hide vh-100 d-flex align-items-center justify-content-center" id="startcard" data-state="visible">
         <div class=" card text-bg-light  " style="max-width: 18rem;">
             <div class="card-header">Coding Quiz Challenge!</div>
             <div class="card-body ">
                 <p class="card-text">Are you ready to test your knowledge?</p>
-                <button type="button" id="start" class="custombtn btn btn-success btn-lg" >Start the quiz!</button>
+                <button type="button" id="btn0" onClick="initGame()" class="custombtn next-btn0 btn btn-success btn-lg">Start the quiz!</button>
             </div>
         </div>
     </section>
 
-    <section class="vh-100 d-flex align-items-center justify-content-center" id="q0" data-state="hidden">
+    <section class="container hide vh-100 d-flex align-items-center justify-content-center" id="card0" data-state="hidden">
         <div class="card" style="width: 18rem;">
             <div class="card-header">
                 What does hoisting refer to?
@@ -43,10 +43,11 @@
                 <li class="list-group-item px-4"><input type="radio" name="hoisting"><label>Javascript being a primarily naval based language</label></li>                
                 <button type="button"  class=" startbtn nextbtn custombtn btn btn-success btn-lg" onclick="nextQuestion();">Next question</button>
             </ul>
+            <button type="button" id="btn1" onClick="showNextCard()" class="custombtn next-btn btn btn-success btn-lg">next!</button>
         </div>
     </section>
 
-    <section class="vh-100 d-flex align-items-center justify-content-center" id="q1" data-state="hidden">
+    <section class="container vh-100 hide d-flex align-items-center justify-content-center" id="card1" data-state="hidden">
         <div class="card" style="width: 18rem;">
             <div class="card-header">
                 What is css used for?
@@ -57,10 +58,11 @@
                 <li class="list-group-item"><input type="radio" name="css"><label>Using style sheets to riverraft</label></li>
                 <button type="button"  class=" nextbtn custombtn btn btn-success btn-lg" onclick="nextQuestion();">Next question</button>
             </ul>
+            <button type="button" id="btn2" onClick="showNextCard()" class="custombtn next-btn btn btn-success btn-lg">next!</button>
         </div>
     </section>
 
-    <section class="vh-100 d-flex align-items-center justify-content-center" id="q2" data-state="hidden">
+    <section class="container vh-100 hide d-flex align-items-center justify-content-center" id="card2" data-state="hidden">
         <div class="card" style="width: 18rem;">
             <div class="card-header">
             What does HTML stand for?
@@ -71,10 +73,11 @@
                 <li class="list-group-item"><input type="radio" name="html"><label>High Tonic Music Listeners</label></li>
                 <button type="button"  class=" nextbtn custombtn btn btn-success btn-lg" onclick="nextQuestion();">Next question</button>
             </ul>
+            <button type="button" id="btn3" onClick="showNextCard()" class="custombtn next-btn btn btn-success btn-lg">next!</button>
         </div>
     </section>
 
-    <section class="vh-100 d-flex align-items-center justify-content-center" id="q3" data-state="hidden">
+    <section class="container vh-100 hide d-flex align-items-center justify-content-center" id="card3" data-state="hidden">
         <div class="card text-bg-light mb-3" style="max-width: 18rem;">
             <div class="card-header">What are for loops usually used for?</div>
             <ul class="list-group list-group-flush">
@@ -83,6 +86,21 @@
                 <li class="list-group-item"><input type="radio" name="forloop"><label>selecting an integer to increase for use in a function</label></li>
                 <button type="button"  class=" nextbtn custombtn btn btn-success btn-lg" onclick="nextQuestion();">Submit!</button>
             </ul> </div>
+            <button type="button" id="btn4" onClick="showNextCard()" class="custombtn next-btn btn btn-success btn-lg">finish!</button>
+        </div>
+    </section>
+
+    <section class="container hide vh-100 d-flex align-items-center justify-content-center" id="finishcard" data-state="hidden">
+        <div class=" card text-bg-light  " style="max-width: 18rem;">
+            <div id="message" class="card-header">All done!</div>
+            <div class="card-body ">
+                <p class="card-text">Your final score is <span id="score"></span>.</p>
+                <form>
+                    <label for="initials">Enter initials:</label>
+                    <input type="text" id="initials" name="initials">
+                    <button id="submit-btn">Submit</button>
+                  </form>
+            </div>
         </div>
     </section>
 

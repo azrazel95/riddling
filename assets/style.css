@@ -21,22 +21,12 @@ body
     display:flex;
 }
 
-.startcontainer{
-    visibility: visible;
+
+.hide[data-state="hidden"] {
+    display:none !important;
 }
 
-#q0{
-    display:none;
-}
-
-#q1{
-    display:none;
-}
-
-#q2{
-    display:none;
-}
-
-#q3{
-    display:none;
-}
+  
+  .card[data-state="visible"] {
+    display: block !important;
+  }
