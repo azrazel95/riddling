@@ -15,7 +15,7 @@
                 <button id="scores" type="button" class="btn scorebtn btn-success">Scores!</button>
               <figure class="d-flex">
                 <div id="countdown">
-                    <p id="timer">element</p>
+                    <p id="timer" class="btn mt-4 btn-success">timer!</p>
                 </div>
             </figure>
             </div>
@@ -85,15 +85,20 @@
             <button type="button" id="btn4" onClick="showNextCard()" class="custombtn next-btn btn btn-success btn-lg">finish!</button>
         </div>
     </section>
-    <div id="finishcard" data-state="hidden">
-        <h1 id="message">All done!</h1>
-        <p>Your final score is <span id="score"></span>.</p>
-        <form>
-          <label for="initials">Enter initials:</label>
-          <input type="text" id="initials" name="initials">
-          <button id="submit-btn">Submit</button>
-        </form>
-      </div>
+
+    <section class="container hide vh-100 d-flex align-items-center justify-content-center" id="finishcard" data-state="hidden">
+        <div class=" card text-bg-light  " style="max-width: 18rem;">
+            <div id="message" class="card-header">All done!</div>
+            <div class="card-body ">
+                <p class="card-text">Your final score is <span id="score"></span>.</p>
+                <form>
+                    <label for="initials">Enter initials:</label>
+                    <input type="text" id="initials" name="initials">
+                    <button id="submit-btn">Submit</button>
+                  </form>
+            </div>
+        </div>
+    </section>
 
   <script src="./assets/script.js"></script>
 </body>
