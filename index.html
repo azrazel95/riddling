@@ -12,7 +12,7 @@
     <header>
         <div class="navbar bg-light">
             <div class="container-fluid">
-                <button id="scores" type="button" class="btn scorebtn btn-success">Scores!</button>
+                <button id="scores" type="button" onClick="scoreCard()"class="btn scorebtn btn-success">Scores!</button>
               <figure class="d-flex">
                 <div id="countdown">
                     <p id="timer" class="btn mt-4 btn-success">timer!</p>
@@ -32,19 +32,19 @@
         </div>
     </section>
 
-    <section class="container hide vh-100 d-flex align-items-center justify-content-center" id="card0" data-state="hidden">
+     <section class="container hide vh-100 d-flex align-items-center justify-content-center" id="card0" data-state="hidden">
         <div class="card" style="width: 18rem;">
-            <div class="card-header">
-                What does hoisting refer to?
+            <div class="card-header" id="questionheader">
             </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item px-4"> <input type="radio" id="correct1" name="answer"><label>JavaScript pushing all variables to the top</label></li> 
-                <li class="list-group-item px-4"><input type="radio" id="wrong1" name="answer"><label>Javascript uplifting CSS</label></li>
-                <li class="list-group-item px-4"><input type="radio" id="wrongs1" name="answer"><label>Javascript being a primarily naval based language</label></li>                
+            <ul class="list-group list-group-flush" id="choices">
+                <li class="list-group-item px-4"> <input type="radio" ><label></label></li> 
+                <li class="list-group-item px-4"><input type="radio" ><label></label></li>
+                <li class="list-group-item px-4"><input type="radio"><label></label></li>                
             </ul>
-            <button type="button" id="btn1" onClick="showNextCard()" class="custombtn next-btn btn btn-success btn-lg">next!</button>
+            <button type="button" id="btn1" class="custombtn next-btn btn btn-success btn-lg">next!</button>
         </div>
     </section>
+    <!--
 
     <section class="container vh-100 hide d-flex align-items-center justify-content-center" id="card1" data-state="hidden">
         <div class="card" style="width: 18rem;">
@@ -84,7 +84,7 @@
             </ul> </div>
             <button type="button" id="btn4" onClick="showNextCard()" class="custombtn next-btn btn btn-success btn-lg">finish!</button>
         </div>
-    </section>
+    </section> -->
 
     <section class="container hide vh-100 d-flex align-items-center justify-content-center" id="finishcard" data-state="hidden">
         <div class=" card text-bg-light  " style="max-width: 18rem;">
