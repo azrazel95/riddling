@@ -45,6 +45,10 @@ const questions = [
   const choicesElement = document.querySelector("#choices");
   const scorebtn = document.querySelector("#scores");
   const questionbtn = document.querySelector('#btn1')
+  let highScores = document.querySelector('#scoreCard')
+  let scoreEl = document.querySelector('#scoreEl')
+  let li = document.createElement("li");
+  let form = document.createElement('form');
   let currentQuestionIndex = 0;
   let timeLeft = 30;
   let score = 0;
@@ -53,7 +57,7 @@ const questions = [
   function setUpScores(scores){
     // localStorage.setitem(('scores', JSON.stringify(scores))
     if (localStorage.getItem('scores') !== null) {
-        scores = JSON.parse(localStorage.getItem('scores'));
+        scores = localStorage.getItem('scores');
     } else {
         localStorage.setItem("scores", JSON.stringify(scores));
     }
@@ -68,14 +72,14 @@ const questions = [
     // Start the timer
     timerIntervalId = setInterval(updateTimer, 1000);
   }
-  
+  //resetTimer upon gameover
   function showQuestion() {
     // Display the current question and choices
     const currentQuestion = questions[currentQuestionIndex];
     questionheader.textContent = currentQuestion.question;
     choicesElement.innerHTML = ""; // Clear previous choices
     currentQuestion.choices.forEach((choice) => {
-        const li = document.createElement("li");
+        let li = document.createElement("li");
         li.classList.add("list-group-item", "px-4")
       const label = document.createElement("label");
       const radio = document.createElement("input");
@@ -87,6 +91,7 @@ const questions = [
       li.appendChild(label);
       choicesElement.appendChild(li);
       questionbtn.addEventListener("click", checkAnswer);
+      console.log(scores)
     });
   }
   
@@ -125,27 +130,61 @@ const questions = [
     }
   }
   
-  
+  let scoreInput;
   function gameOver() {
     // Stop the timer and display the final score
     clearInterval(timerIntervalId);
+  
+    
+    questionheader.classList.add("text-center", "font-weight-bold")
     questionheader.textContent = "Game Over";
-    choicesElement.textContent = "Your score: " + score;
+    choicesElement.classList.add("text-center")
+    choicesElement.textContent = "Your score:";
+    choicesElement.appendChild(li);
+    choicesElement.appendChild(form)
+    
+    console.log(form)
+    li.classList.add("list-group-item", "px-4", "text-center")
+    li.setAttribute("id", "userScore")
+    li.innerHTML = score;
+    
+    form.classList.add('form-inline', "m-2");
+    const scoreInput = document.createElement('input');
+    scoreInput.id = 'scoreInput';
+    scoreInput.classList.add('form-control', 'mr-sm-2');
+    scoreInput.type = "text"
+    scoreInput.placeholder = "enter your Initals!";
+    scoreInput.setAttribute("aria-label", "score");
+    form.appendChild(scoreInput)
+    questionbtn.addEventListener('click', saveScore)
+    
     // TODO: Allow user to save initials and score
-    saveScore();
+    
   }
   function scoreCard(){
-    questionheader.textContent = "high scores!";
-    scores.forEach(() =>{
-    const li = document.createElement("li");
-    choicesElement.append(li)})
-    
-    
-  }
+    startcard.setAttribute('data-state', 'hidden');
+    questionEl.setAttribute('data-state', 'hidden');
+    highScores.setAttribute('data-state', 'visible');
+    for (let i = 0; i < scores.length; i++) {
+      
+      li.classList.add('list-group-item', 'px-4')
+      li.innerText = `${scores[i].initials}: ${scores[i].score}`;
+      scoreEl.append(li);
+  }}
   function saveScore(){
-    userScore = scoreInput.val()
-    scores.push(userScore);
-    localStorage.setItem((scores).JSON.stringify(scores))
+    console.log(scores)
+    localStorage.setItem("scores", JSON.stringify(scores))
+    let userInits = document.getElementById('scoreInput').value
+    let scoreNum = document.getElementById("userScore").innerText
+    let scoreObject = { initials: userInits, score: scoreNum }
+    scores.push(scoreObject);
+    localStorage.setItem("scores", JSON.stringify(scores))
+    console.log(scores)
+    scoreCard()
+  }
+  function backtostart(){
+    highScores.setAttribute('data-state', 'hidden');
+    startcard.setAttribute('data-state', 'visible');
   }
   setUpScores();
   // Attach event listeners
