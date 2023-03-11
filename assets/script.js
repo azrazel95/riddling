@@ -54,6 +54,8 @@ const questions = [
   let score = 0;
   let timerIntervalId;
   let scores = []
+  let userInits
+  let scoreNum
   function setUpScores(scores){
     // localStorage.setitem(('scores', JSON.stringify(scores))
     if (localStorage.getItem('scores') !== null) {
@@ -134,6 +136,7 @@ const questions = [
   function gameOver() {
     // Stop the timer and display the final score
     clearInterval(timerIntervalId);
+    
   
     
     questionheader.classList.add("text-center", "font-weight-bold")
@@ -147,44 +150,62 @@ const questions = [
     li.classList.add("list-group-item", "px-4", "text-center")
     li.setAttribute("id", "userScore")
     li.innerHTML = score;
-    
+    form.innerhtml = ""
     form.classList.add('form-inline', "m-2");
     const scoreInput = document.createElement('input');
+    let remaininginput = form.querySelector("#scoreInput");
+    if (remaininginput){
+      remaininginput.remove()
+    }
     scoreInput.id = 'scoreInput';
     scoreInput.classList.add('form-control', 'mr-sm-2');
     scoreInput.type = "text"
     scoreInput.placeholder = "enter your Initals!";
     scoreInput.setAttribute("aria-label", "score");
     form.appendChild(scoreInput)
-    questionbtn.addEventListener('click', saveScore)
+    questionbtn.removeEventListener('click', saveScore);
+    questionbtn.addEventListener('click', saveScore);
+
     
     // TODO: Allow user to save initials and score
     
   }
   function scoreCard(){
+    clearInterval(timerIntervalId);
+    scores = JSON.parse(localStorage.getItem('scores')) || []
     startcard.setAttribute('data-state', 'hidden');
     questionEl.setAttribute('data-state', 'hidden');
     highScores.setAttribute('data-state', 'visible');
+    console.log(scores)
+    let remainingscoreEl = scoreEl.querySelectorAll(".list-group-item")
+    if (remainingscoreEl){
+      remainingscoreEl.forEach(element => element.remove())
+    }
     for (let i = 0; i < scores.length; i++) {
-      
+      const li = document.createElement('li');
       li.classList.add('list-group-item', 'px-4')
       li.innerText = `${scores[i].initials}: ${scores[i].score}`;
       scoreEl.append(li);
   }}
   function saveScore(){
     console.log(scores)
-    localStorage.setItem("scores", JSON.stringify(scores))
-    let userInits = document.getElementById('scoreInput').value
-    let scoreNum = document.getElementById("userScore").innerText
+    
+    
+    userInits = document.getElementById('scoreInput').value
+    scoreNum = document.getElementById("userScore").innerText
     let scoreObject = { initials: userInits, score: scoreNum }
     scores.push(scoreObject);
     localStorage.setItem("scores", JSON.stringify(scores))
     console.log(scores)
+    questionbtn.removeEventListener('click', saveScore);
     scoreCard()
   }
   function backtostart(){
     highScores.setAttribute('data-state', 'hidden');
     startcard.setAttribute('data-state', 'visible');
+    currentQuestionIndex = 0;
+    timeLeft = 30
+    score = 0
   }
   setUpScores();
   // Attach event listeners
