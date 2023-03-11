@@ -51,6 +51,7 @@ let highScores = document.querySelector('#scoreCard')
 let scoreEl = document.querySelector('#scoreEl')
 let li = document.createElement("li");
 let form = document.createElement('form');
+let timebtn = document.querySelector('#timer')
 //declaring function results and variables used amongst multiple functions
 let currentQuestionIndex = 0;
 let timeLeft = 30;
@@ -76,6 +77,8 @@ function initGame() {
   // Hides the starting card and shows the question card
   startcard.setAttribute('data-state', 'hidden');
   questionEl.setAttribute('data-state', 'visible');
+  timebtn.setAttribute('data-state', 'visible');
+  
   //populates the question card with the first question
   showQuestion();
   // Starts the timer
@@ -189,7 +192,11 @@ function scoreCard() {
   //ensures that if pressed during the quiz you dont keep the timer running for quality of life
   clearInterval(timerIntervalId);
   //gets the scores from localstorage if not previously populated locally
-  scores = JSON.parse(localStorage.getItem('scores')) || []
+  if (typeof localStorage !== 'undefined') {
+    scores = JSON.parse(localStorage.getItem('scores')) || []
+  } else {
+    scores = []
+  }
   //hides the other 2 cards in case the button is pressed at any moment
   startcard.setAttribute('data-state', 'hidden');
   questionEl.setAttribute('data-state', 'hidden');
@@ -226,6 +233,7 @@ function backtostart() {
   //on buttonpress of the button on highscores, it will return you to the starting card
   highScores.setAttribute('data-state', 'hidden');
   startcard.setAttribute('data-state', 'visible');
+  scorebtn.setAttribute('data-state', 'visible');
   //resets to beginningquestion, resets the timer, and the score for a new game
   currentQuestionIndex = 0;
   timeLeft = 30
