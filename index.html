@@ -10,28 +10,31 @@
 </head>
 <body>
     <header>
+        <!-- navbar! -->
         <div class="navbar bg-light">
             <div class="container-fluid">
+                <!-- the score button. upon click it calls the scoreCard function from script.js -->
                 <button id="scores" type="button" onClick="scoreCard()"class="btn scorebtn btn-success">Scores!</button>
               <figure class="d-flex">
                 <div id="countdown">
+                    <!-- honestly i just like the button look on the timer element -->
                     <p id="timer" class="btn mt-4 btn-success">timer!</p>
                 </div>
             </figure>
             </div>
           </div>
     </header>
-
+<!-- startcard! on click of the button, it calls the initGame function and gets hidden -->
     <section class="container hide vh-100 d-flex align-items-center justify-content-center" id="startcard" data-state="visible">
         <div class=" card text-bg-light  " style="max-width: 18rem;">
             <div class="card-header">Coding Quiz Challenge!</div>
             <div class="card-body ">
                 <p class="card-text">Are you ready to test your knowledge?</p>
-                <button type="button" id="btn0" onClick="initGame()" class="custombtn next-btn0 btn btn-success btn-lg">Start the quiz!</button>
+                <button type="button" id="btn0" onClick="initGame()" class="next-btn0 btn btn-success btn-lg">Start the quiz!</button>
             </div>
         </div>
     </section>
-
+<!-- the question card! -->
      <section class="container hide vh-100 d-flex align-items-center justify-content-center" id="card0" data-state="hidden">
         <div class="card" style="width: 18rem;">
             <div class="card-header" id="questionheader">
@@ -45,7 +48,7 @@
         </div>
     </section>
     
-
+<!-- the high scores card! on click of the button it returns you to the startcard and hides -->
     <section class="container hide scoreCard vh-100 hide d-flex align-items-center justify-content-center" id="scoreCard" data-state="hidden">
         <div class="card" style="width: 18rem;">
             <div class="card-header">
@@ -56,33 +59,7 @@
             <button type="button" id="btn2" onClick="backtostart()" class="custombtn next-btn btn btn-success btn-lg">return!</button>
         </div>
     </section>
-<!--
-    <section class="container vh-100 hide d-flex align-items-center justify-content-center" id="card2" data-state="hidden">
-        <div class="card" style="width: 18rem;">
-            <div class="card-header">
-            What does HTML stand for?
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item"><input type="radio" id="wrong3" name="answer"><label>Hyped Tempurpedic Monkey Lions</label></li>
-                <li class="list-group-item"><input type="radio" id="correct3" name="answer"><label>Hyper Text Markup Language</label></li>
-                <li class="list-group-item"><input type="radio" id="wrongs3" name="answer"><label>High Tonic Music Listeners</label></li>
-            </ul>
-            <button type="button" id="btn3" onClick="showNextCard()" class="custombtn next-btn btn btn-success btn-lg">next!</button>
-        </div>
-    </section>
-
-    <section class="container vh-100 hide d-flex align-items-center justify-content-center" id="card3" data-state="hidden">
-        <div class="card text-bg-light mb-3" style="max-width: 18rem;">
-            <div class="card-header">What are for loops usually used for?</div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item"><input type="radio" id="wrong4" name="answer"><label>to create ongoing css cascades</label></li>
-                <li class="list-group-item"><input type="radio" id="wrongs4" name="answer"><label>they are javascripts answer to fruit loops</label></li>
-                <li class="list-group-item"><input type="radio" id="correct4" name="answer"><label>selecting an integer to increase for use in a function</label></li>
-            </ul> </div>
-            <button type="button" id="btn4" onClick="showNextCard()" class="custombtn next-btn btn btn-success btn-lg">finish!</button>
-        </div>
-    </section> -->
-
+<!-- the game over card. -->
     <section class="container hide vh-100 d-flex align-items-center justify-content-center" id="finishcard" data-state="hidden">
         <div class=" card text-bg-light  " style="max-width: 18rem;">
             <div id="message" class="card-header">All done!</div>

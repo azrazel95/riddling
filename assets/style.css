@@ -1,32 +1,40 @@
-body
-    {
-        background-color:purple;
-        background-image: linear-gradient(rgb(34, 36, 145), rgb(128, 9, 32));
-      }
-      
+/* i like the funky background */
+body {
+    background-color: purple;
+    background-image: linear-gradient(rgb(34, 36, 145), rgb(128, 9, 32));
+}
+
+/* i also like the background changing on buttonpress */
 .custombtn,
-.nextbtn { 
-    background-color:blueviolet;
-    color:white;
-    margin-left:20%;
-}
 .nextbtn {
-    width:100%;
-    margin-left:0
+    background-color: blueviolet;
+    color: white;
+}
+#btn0 {
+    background-color: blueviolet;
+    color: white;
+    margin-left: 19%;
 }
 
-.scorebtn{
-    
-    background-color:blueviolet;
-    display:flex;
+/* button customizations */
+.nextbtn {
+    background-color: blueviolet;
+    width: 100%;
+    margin-left: 0
 }
 
+.scorebtn {
 
+    background-color: blueviolet;
+    display: flex;
+}
+
+/* implements the hiding of cards functionality */
 .hide[data-state="hidden"] {
-    display:none !important;
+    display: none !important;
 }
 
-  
-  .card[data-state="visible"] {
+
+.card[data-state="visible"] {
     display: block !important;
-  }
+}
