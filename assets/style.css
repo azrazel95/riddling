@@ -33,6 +33,10 @@ body {
 .hide[data-state="hidden"] {
     display: none !important;
 }
+/* hiding the scores button until after one game is played, and the timer until game starts */
+.hidenav[data-state="hidden"] {
+    visibility: hidden !important;
+}
 
 
 .card[data-state="visible"] {
